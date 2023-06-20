@@ -224,4 +224,25 @@ namespace handlebit {
         else
             return -1;
     }
+    
+     /**
+     * Berechnet den Winkelwert des gewünschten Joystick.
+     */
+    //% weight=84 blockGap=50 blockId=winkelBerechnen block="Winkel |%joystick|"
+    export function winkelBerechnen(joystick: Joystick) : number {
+        let value: number = 0;
+        let xWert=0;
+        let yWert=0;
+        if (joystick == Joystick.JOYSTICK_LEFT)
+        {
+            xWert=JoystickX1-125;
+            yWert=JoystickY1-125;
+        }
+        else {
+            xWert=JoystickX2-125;
+            yWert=JoystickY2-125;
+        }
+            value = Math.atan2(yWert,xWert)/Math.PI*180+180;
+    return value;
+    }
 }
