@@ -111,7 +111,7 @@ namespace handlebit {
                         handleCmd = "";
                         return;
                     }
-                    JoystickX1 = 255 - argsInt;
+                    JoystickX1 = (128 - argsInt)*2-1;
 
                     args = cmd.substr(3, 2);
                     argsInt = strToNumber(args);
@@ -119,7 +119,7 @@ namespace handlebit {
                         handleCmd = "";
                         return;
                     }
-                    JoystickY1 = argsInt;
+                    JoystickY1 = (argsInt-128)*2+1;
 
                     args = cmd.substr(5, 2);
                     argsInt = strToNumber(args);
@@ -127,7 +127,7 @@ namespace handlebit {
                         handleCmd = "";
                         return;
                     }
-                    JoystickX2 = 255 - argsInt;
+                    JoystickX2 = (128 - argsInt)*2-1;
 
                     args = cmd.substr(7, 2);
                     argsInt = strToNumber(args);
@@ -135,7 +135,7 @@ namespace handlebit {
                         handleCmd = "";
                         return;
                     }
-                    JoystickY2 = argsInt;
+                    JoystickY2 = (argsInt-128)*2+1;
                 }
                 startIndex = index + 1;
             }
@@ -178,7 +178,7 @@ namespace handlebit {
     /**
      * Liest den Wert des gewünschten Joystick in die gewünschte Richtung.
      */
-    //% weight=84 blockGap=50 blockId=handle_getHandleSensorValue block="|%type|Sensorwert (0-255)"
+    //% weight=84 blockGap=50 blockId=handle_getHandleSensorValue block="|%type|Sensorwert (-255 bis 255)"
     export function handle_getHandleSensorValue(type: HandleSensorValue): number {
         let value: number = 0;
         switch (type) {
@@ -242,12 +242,12 @@ namespace handlebit {
         let yWert=0;
         if (joystick == Joystick.JOYSTICK_LEFT)
         {
-            xWert=JoystickX1-125;
-            yWert=JoystickY1-125;
+            xWert=JoystickX1;
+            yWert=JoystickY1;
         }
         else {
-            xWert=JoystickX2-125;
-            yWert=JoystickY2-125;
+            xWert=JoystickX2;
+            yWert=JoystickY2;
         }
             value = Math.atan2(yWert,xWert)/Math.PI*180+180;
     return value;
