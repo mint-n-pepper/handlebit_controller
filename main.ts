@@ -25,6 +25,13 @@ namespace handlebit {
         JOYSTICK_Y2
     }
 
+    export enum Joystick {
+        //% block="Joystick links"
+        JOYSTICK_LEFT,
+        //% block="Joystick rechts"
+        JOYSTICK_RIGHT
+    }
+
     let JoystickX1: number = -1;
     let JoystickX2: number = -1;
     let JoystickY1: number = -1;
