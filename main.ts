@@ -1,7 +1,7 @@
 /*
 gamepad package
 */
-//% weight=10 icon="\uf11b" color=#2896ff block="Handlebit Controller" 
+//% weight=10 icon="\uf11b" color=#d736ff block="Handlebit Controller" 
 namespace handlebit_controller {
     export enum HandleButton {
         //% block="B1"
