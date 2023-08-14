@@ -111,7 +111,8 @@ namespace handlebit_controller {
                         handleCmd = "";
                         return;
                     }
-                    JoystickX1 = (128 - argsInt)*2-1;
+                    //converting values to range [-100;100]
+                    JoystickX1 = Math.floor(((128 - argsInt)*2-1)*100/255);
 
                     args = cmd.substr(3, 2);
                     argsInt = strToNumber(args);
@@ -119,7 +120,7 @@ namespace handlebit_controller {
                         handleCmd = "";
                         return;
                     }
-                    JoystickY1 = (argsInt-128)*2+1;
+                    JoystickY1 = Math.floor(((argsInt-128)*2+1)*100/255);
 
                     args = cmd.substr(5, 2);
                     argsInt = strToNumber(args);
@@ -127,7 +128,7 @@ namespace handlebit_controller {
                         handleCmd = "";
                         return;
                     }
-                    JoystickX2 = (128 - argsInt)*2-1;
+                    JoystickX2 = Math.floor(((128 - argsInt)*2-1)*100/255);
 
                     args = cmd.substr(7, 2);
                     argsInt = strToNumber(args);
@@ -135,7 +136,7 @@ namespace handlebit_controller {
                         handleCmd = "";
                         return;
                     }
-                    JoystickY2 = (argsInt-128)*2+1;
+                    JoystickY2 = Math.floor(((argsInt-128)*2+1)*100/255);
                 }
                 startIndex = index + 1;
             }
@@ -178,7 +179,7 @@ namespace handlebit_controller {
     /**
      * Liest den Wert des gewünschten Joystick in die gewünschte Richtung.
      */
-    //% weight=84 blockGap=50 blockId=handle_getHandleSensorValue block="|%type|Sensorwert (-255 bis 255)"
+    //% weight=84 blockGap=50 blockId=handle_getHandleSensorValue block="Sensorwert |%type| (-100 bis 100)"
     export function handle_getHandleSensorValue(type: HandleSensorValue): number {
         let value: number = 0;
         switch (type) {
