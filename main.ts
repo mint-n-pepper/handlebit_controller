@@ -236,8 +236,8 @@ namespace handlebit_controller {
      /**
      * Berechnet den Winkelwert des gewünschten Joystick.
      */
-    //% weight=84 blockGap=50 blockId=winkelBerechnen block="Winkel |%joystick|"
-    export function winkelBerechnen(joystick: Joystick) : number {
+    //% weight=84 blockGap=50 blockId=calculateAngle block="Winkel |%joystick|"
+    export function calculateAngle(joystick: Joystick) : number {
         let value: number = 0;
         let xWert=0;
         let yWert=0;
@@ -250,7 +250,32 @@ namespace handlebit_controller {
             xWert=JoystickX2;
             yWert=JoystickY2;
         }
-            value = Math.atan2(yWert,xWert)/Math.PI*180+180;
+            value = Math.round(Math.atan2(yWert,xWert)/Math.PI*180)+180;
     return value;
+    }
+
+    /**
+     * Berechnet die Auslenkung des gewünschten Joystick.
+     */
+    //% weight=84 blockGap=50 blockId=calculateDeflection block="Auslenkung |%joystick|"
+    export function calculateDeflection(joystick: Joystick): number {
+        let value: number = 0;
+        let x = 0;
+        let y = 0;
+        if (joystick == Joystick.JOYSTICK_LEFT) {
+            x = JoystickX1;
+            y = JoystickY1;
+        }
+        else {
+            x = JoystickX2;
+            y = JoystickY2;
+        }
+        // adding 0.1 in case both x and y are 0
+        value = Math.round(Math.sqrt(x*x+y*y+0.1));
+        if (value > 100)
+        {
+            value=100;
+        }
+        return value;
     }
 }
