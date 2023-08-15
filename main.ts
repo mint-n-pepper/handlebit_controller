@@ -14,21 +14,18 @@ namespace handlebit_controller {
         JOYSTICK2 = EventBusValue.MES_DPAD_BUTTON_C_DOWN
     }
 
-    export enum HandleSensorValue {
-        //% block="Joystick links X"
-        JOYSTICK_X1,
-        //% block="Joystick links Y"
-        JOYSTICK_Y1,
-        //% block="Joystick rechts X"
-        JOYSTICK_X2,
-        //% block="Joystick rechts Y"
-        JOYSTICK_Y2
+    export enum Direction {
+        //% block="X"
+        DIR_X,
+        //% block="Y"
+        DIR_Y
     }
 
+
     export enum Joystick {
-        //% block="Joystick links"
+        //% block="links"
         JOYSTICK_LEFT,
-        //% block="Joystick rechts"
+        //% block="rechts"
         JOYSTICK_RIGHT
     }
 
@@ -179,14 +176,24 @@ namespace handlebit_controller {
     /**
      * Liest den Wert des gewünschten Joystick in die gewünschte Richtung.
      */
-    //% weight=84 blockGap=50 blockId=handle_getHandleSensorValue block="Sensorwert |%type| (-100 bis 100)"
-    export function handle_getHandleSensorValue(type: HandleSensorValue): number {
+    //% weight=84 blockId=handle_getHandleSensorValue block="Sensorwert von Joystick |%joystick| in |%direction| Richtung (-100 bis 100)"
+    export function handle_getHandleSensorValue(joystick: Joystick, direction: Direction): number {
         let value: number = 0;
-        switch (type) {
-            case HandleSensorValue.JOYSTICK_X1: value = JoystickX1; break;
-            case HandleSensorValue.JOYSTICK_Y1: value = JoystickY1; break;
-            case HandleSensorValue.JOYSTICK_X2: value = JoystickX2; break;
-            case HandleSensorValue.JOYSTICK_Y2: value = JoystickY2; break;
+        if (joystick == Joystick.JOYSTICK_LEFT){
+            if (direction == Direction.DIR_X) {
+                value = JoystickX1;
+            }
+            else {
+                value = JoystickY1;
+            }
+        }
+        else {
+            if (direction == Direction.DIR_X) {
+                value = JoystickX2;
+            }
+            else {
+                value = JoystickY2;
+            }
         }
         return value;
     }
@@ -236,7 +243,7 @@ namespace handlebit_controller {
      /**
      * Berechnet den Winkelwert des gewünschten Joystick.
      */
-    //% weight=84 blockGap=50 blockId=calculateAngle block="Winkel |%joystick|"
+    //% blockId=calculateAngle block="Winkel Joystick |%joystick|"
     export function calculateAngle(joystick: Joystick) : number {
         let value: number = 0;
         let xWert=0;
@@ -257,7 +264,7 @@ namespace handlebit_controller {
     /**
      * Berechnet die Auslenkung des gewünschten Joystick.
      */
-    //% weight=84 blockGap=50 blockId=calculateDeflection block="Auslenkung |%joystick|"
+    //% blockId=calculateDeflection block="Auslenkung Jostick |%joystick|"
     export function calculateDeflection(joystick: Joystick): number {
         let value: number = 0;
         let x = 0;
