@@ -1,8 +1,8 @@
 /*
 gamepad package
 */
-//% weight=10 icon="\uf11b" color=#d736ff block="Handlebit Controller" 
-namespace handlebit_controller {
+//% weight=10 icon="\uf11b" color=#d736ff block="Handlebit" 
+namespace handlebit {
     export enum HandleButton {
         //% block="B1"
         B1 = EventBusValue.MES_DPAD_BUTTON_2_DOWN,
