@@ -177,7 +177,7 @@ namespace handlebit_controller {
      * Liest den Wert des gewünschten Joystick in die gewünschte Richtung. 
      * Die Werte liegen im Bereich -100 bis 100.
      */
-    //% weight=84 blockId=handle_getHandleSensorValue block="|%direction|-Wert von Joystick |%joystick|"
+    //% weight=84 blockId=handle_getHandleSensorValue block="|%joystick|-Wert von Joystick |%direction|"
     export function handle_getHandleSensorValue(joystick: Joystick, direction: Direction): number {
         let value: number = 0;
         if (joystick == Joystick.JOYSTICK_LEFT){
