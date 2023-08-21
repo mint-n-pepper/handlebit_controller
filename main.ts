@@ -38,8 +38,8 @@ namespace handlebit {
     /**
        * Dieser Block muss beim Start einmal ausgeführt werden um den Handlebit zu initialisieren
       */
-    //% weight=100 blockId=handlebitInit block="Handlebit Initialisierung"
-    export function handlebitInit() {
+    //% weight=100 blockId=initialize block="Handlebit Initialisierung"
+    export function initialize() {
         serial.redirect(
             SerialPin.P12,
             SerialPin.P8,
@@ -168,8 +168,8 @@ namespace handlebit {
      * @param button the button that needs to be pressed
      * @param body code to run when event is raised
      */
-    //% weight=86 blockId=onHandleButtonPressed block="wenn Knopf |%button|gedrückt"
-    export function onHandleButtonPressed(button: HandleButton, body: Action) {
+    //% weight=86 blockId=onButtonPressed block="wenn Knopf |%button|gedrückt"
+    export function onButtonPressed(button: HandleButton, body: Action) {
         control.onEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, button, body);
     }
 
@@ -177,8 +177,8 @@ namespace handlebit {
      * Liest den Wert des gewünschten Joystick in die gewünschte Richtung. 
      * Die Werte liegen im Bereich -100 bis 100.
      */
-    //% weight=84 blockId=handle_getHandleSensorValue block="|%direction|-Wert von Joystick |%joystick|"
-    export function handle_getHandleSensorValue(direction: Direction, joystick: Joystick): number {
+    //% weight=84 blockId=getSensorValue block="|%direction|-Wert von Joystick |%joystick|"
+    export function getSensorValue(direction: Direction, joystick: Joystick): number {
         let value: number = 0;
         if (joystick == Joystick.JOYSTICK_LEFT){
             if (direction == Direction.DIR_X) {
@@ -245,8 +245,8 @@ namespace handlebit {
      * Berechnet den Winkelwert des gewünschten Joystick.
      * Die Werte liegen im Bereich 0 bis 360 Grad.
      */
-    //% blockId=calculateAngle block="Winkel Joystick |%joystick|"
-    export function calculateAngle(joystick: Joystick) : number {
+    //% blockId=getAngle block="Winkel Joystick |%joystick|"
+    export function getAngle(joystick: Joystick) : number {
         let value: number = 0;
         let xWert=0;
         let yWert=0;
@@ -267,8 +267,8 @@ namespace handlebit {
      * Berechnet die Auslenkung des gewünschten Joystick.
      * Die Werte liegen im Bereich -100 bis 100.
      */
-    //% blockId=calculateDeflection block="Auslenkung Jostick |%joystick|"
-    export function calculateDeflection(joystick: Joystick): number {
+    //% blockId=getDeflection block="Auslenkung Jostick |%joystick|"
+    export function getDeflection(joystick: Joystick): number {
         let value: number = 0;
         let x = 0;
         let y = 0;
