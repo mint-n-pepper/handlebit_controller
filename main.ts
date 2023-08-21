@@ -3,7 +3,7 @@ gamepad package
 */
 //% weight=10 icon="\uf11b" color=#d736ff block="Handlebit" 
 namespace handlebit {
-    export enum HandleButton {
+    export enum Button {
         //% block="B1"
         B1 = EventBusValue.MES_DPAD_BUTTON_2_DOWN,
         //% block="B2"
@@ -81,19 +81,19 @@ namespace handlebit {
                         }
                         switch (argsInt) {
                             case 1:
-                                control.raiseEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, HandleButton.B1);
+                                control.raiseEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, Button.B1);
                                 break;
 
                             case 3:
-                                control.raiseEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, HandleButton.B2);
+                                control.raiseEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, Button.B2);
                                 break;
 
                             case 5:
-                                control.raiseEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, HandleButton.JOYSTICK1);
+                                control.raiseEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, Button.JOYSTICK1);
                                 break;
 
                             case 7:
-                                control.raiseEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, HandleButton.JOYSTICK2);
+                                control.raiseEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, Button.JOYSTICK2);
                                 break;
 
                             default:
@@ -168,8 +168,8 @@ namespace handlebit {
      * @param button the button that needs to be pressed
      * @param body code to run when event is raised
      */
-    //% weight=86 blockId=onButtonPressed block="wenn Knopf |%button|gedrückt"
-    export function onButtonPressed(button: HandleButton, body: Action) {
+    //% weight=86 blockId=onButtonPressed block="wenn Knopf |%button| gedrückt"
+    export function onButtonPressed(button: Button, body: Action) {
         control.onEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, button, body);
     }
 
