@@ -174,9 +174,10 @@ namespace handlebit_controller {
     }
 
     /**
-     * Liest den Wert des gewünschten Joystick in die gewünschte Richtung.
+     * Liest den Wert des gewünschten Joystick in die gewünschte Richtung. 
+     * Die Werte liegen im Bereich -100 bis 100.
      */
-    //% weight=84 blockId=handle_getHandleSensorValue block="Sensorwert von Joystick |%joystick| in |%direction| Richtung (-100 bis 100)"
+    //% weight=84 blockId=handle_getHandleSensorValue block="|%direction|-Wert von Joystick |%joystick|"
     export function handle_getHandleSensorValue(joystick: Joystick, direction: Direction): number {
         let value: number = 0;
         if (joystick == Joystick.JOYSTICK_LEFT){
@@ -242,6 +243,7 @@ namespace handlebit_controller {
     
      /**
      * Berechnet den Winkelwert des gewünschten Joystick.
+     * Die Werte liegen im Bereich 0 bis 360 Grad.
      */
     //% blockId=calculateAngle block="Winkel Joystick |%joystick|"
     export function calculateAngle(joystick: Joystick) : number {
@@ -263,6 +265,7 @@ namespace handlebit_controller {
 
     /**
      * Berechnet die Auslenkung des gewünschten Joystick.
+     * Die Werte liegen im Bereich -100 bis 100.
      */
     //% blockId=calculateDeflection block="Auslenkung Jostick |%joystick|"
     export function calculateDeflection(joystick: Joystick): number {
