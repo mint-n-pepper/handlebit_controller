@@ -267,7 +267,7 @@ namespace handlebit {
      * Berechnet die Auslenkung des gewünschten Joystick.
      * Die Werte liegen im Bereich -100 bis 100.
      */
-    //% blockId=getDeflection block="Auslenkung Jostick |%joystick|"
+    //% blockId=getDeflection block="Auslenkung Joystick |%joystick|"
     export function getDeflection(joystick: Joystick): number {
         let value: number = 0;
         let x = 0;
